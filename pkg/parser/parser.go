@@ -16,7 +16,7 @@ type Entry struct {
 	ID     string
 	Date   time.Time
 	Desc   string
-	Amount int
+	Amount float32
 }
 
 // Interface that must be implemented
