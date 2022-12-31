@@ -12,10 +12,14 @@ import (
 
 type Parser struct{}
 
+// NewParser returns a new Parser for OFX files
 func NewParser() *Parser {
 	return &Parser{}
 }
 
+// GetEntries extracts all the transactions from OFX files
+// and transforms it in a list of Entries, except for the cases
+// that the file can't be parsed or doesn't exists
 func (*Parser) GetEntries(path parser.BankFilePath) ([]parser.Entry, error) {
 	if !fileExists(path) {
 		return []parser.Entry{}, &parser.FileNotFoundError{Path: path}
