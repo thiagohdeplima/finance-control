@@ -26,5 +26,5 @@ type Interface interface {
 
 	// GetEntries is where the entries
 	// is extracted from the BankFilePath
-	GetEntries(BankFilePath) []Entry
+	GetEntries(BankFilePath) ([]Entry, error)
 }
