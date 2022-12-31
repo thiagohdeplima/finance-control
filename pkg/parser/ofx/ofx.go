@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/aclindsa/ofxgo"
+	"github.com/thiagohdeplima/financial-control/pkg/fileutil"
 	"github.com/thiagohdeplima/financial-control/pkg/parser"
 )
 
@@ -21,8 +22,8 @@ func NewParser() *Parser {
 // and transforms it in a list of Entries, except for the cases
 // that the file can't be parsed or doesn't exists
 func (*Parser) GetEntries(path parser.BankFilePath) ([]parser.Entry, error) {
-	if !fileExists(path) {
-		return []parser.Entry{}, &parser.FileNotFoundError{Path: path}
+	if err := fileutil.FileExistsWithError(string(path)); err != nil {
+		return []parser.Entry{}, err
 	}
 
 	resp, err := readBankFile(path)
@@ -31,14 +32,6 @@ func (*Parser) GetEntries(path parser.BankFilePath) ([]parser.Entry, error) {
 	}
 
 	return getEntriesFromResponse(resp)
-}
-
-func fileExists(path parser.BankFilePath) bool {
-	if _, err := os.Stat(string(path)); err == nil {
-		return true
-	} else {
-		return false
-	}
 }
 
 func readBankFile(path parser.BankFilePath) (*ofxgo.Response, error) {

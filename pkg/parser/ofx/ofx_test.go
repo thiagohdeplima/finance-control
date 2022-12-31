@@ -7,6 +7,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	"github.com/thiagohdeplima/financial-control/pkg/fileutil"
 	"github.com/thiagohdeplima/financial-control/pkg/parser"
 )
 
@@ -22,7 +23,7 @@ func Test_GetEntries(t *testing.T) {
 			"returns error when file doesn't exists",
 			"inexistent",
 			[]parser.Entry{},
-			&parser.FileNotFoundError{Path: "inexistent"},
+			&fileutil.FileNotFoundError{Path: "inexistent"},
 			NewParser,
 		},
 
