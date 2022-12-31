@@ -20,7 +20,8 @@ type Entry struct {
 }
 
 // Interface that must be implemented
-// by any data extractor
+// by any data extractor, ie, the
+// bank specific parsers
 type Interface interface {
 
 	// GetEntries is where the entries
