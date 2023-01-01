@@ -8,10 +8,11 @@ type BankFilePath string
 
 // Interface that must be implemented
 // by any data extractor, ie, the
-// bank specific parsers
+// bank or file type specific parsers
 type Interface interface {
 
-	// GetEntries is where the entries
-	// is extracted from the BankFilePath
+	// GetEntries receives reads the
+	// file in the BankFilePath and
+	// parse its content to []Entry
 	GetEntries(BankFilePath) ([]Entry, error)
 }
