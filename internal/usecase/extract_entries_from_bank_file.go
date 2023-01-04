@@ -12,6 +12,6 @@ func NewExtractEntriesFromBankFile(parser parser.Interface) *ExtractEntriesFromB
 	return &ExtractEntriesFromBankFileImpl{Parser: parser}
 }
 
-func (p *ExtractEntriesFromBankFileImpl) ExtractEntriesFromBankFile(YAMLFile parser.BankFilePath) ([]parser.Entry, error) {
+func (p *ExtractEntriesFromBankFileImpl) Run(YAMLFile parser.BankFilePath) ([]parser.Entry, error) {
 	return p.Parser.GetEntries(YAMLFile)
 }

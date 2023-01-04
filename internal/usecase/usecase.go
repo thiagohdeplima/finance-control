@@ -7,5 +7,5 @@ import (
 // ExtractEntriesFromBankFile parses the content of
 // parser.BankFilePath into []parser.Entry
 type ExtractEntriesFromBankFile interface {
-	ExtractEntriesFromBankFile(YAML parser.BankFilePath) ([]parser.Entry, error)
+	Run(YAML parser.BankFilePath) ([]parser.Entry, error)
 }

@@ -50,7 +50,7 @@ func Test_ParseBankFile(t *testing.T) {
 
 			mparser.On("GetEntries", ymlPath).Return(tc.ExpEntries, tc.ExpError)
 
-			actual, err := usecase.ExtractEntriesFromBankFile(ymlPath)
+			actual, err := usecase.Run(ymlPath)
 
 			assert.Equal(t, tc.ExpEntries, actual)
 			assert.Equal(t, tc.ExpError, err)
