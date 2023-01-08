@@ -56,8 +56,4 @@ func Test_ParseBankFile(t *testing.T) {
 			assert.Equal(t, tc.ExpError, err)
 		})
 	}
-
-	t.Run("returns the result of parser", func(t *testing.T) {
-
-	})
 }
